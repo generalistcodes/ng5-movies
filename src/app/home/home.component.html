@@ -1,0 +1,21 @@
+<header>
+  <form>
+    <input type="text" class="txt card" name="title" [(ngModel)]="filter.title" placeholder="Search Movies" >
+  </form>
+</header>
+
+<div class="band">
+
+  <div class="item-2" *ngFor="let movie of movies | moviefilter:filter | slice:(page-1)*limit:page*limit">
+    <a href="#" class="card">
+      <div class="thumb">
+        <img *ngIf="movie.poster_path" class="img-thumbnail" src="https://image.tmdb.org/t/p/w300{{movie.poster_path}}">
+      </div>
+      <article>
+        <h1>{{movie.title}}</h1>
+        <p>{{movie.overview}}</p>
+        <span>{{movie.id}} <input class="btn card" type="btn" value="Overview"></span>
+      </article>
+    </a>
+  </div>
+</div>
