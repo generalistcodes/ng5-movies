@@ -32,3 +32,17 @@ table input {
 table input[type=number] {
   width: 60px;
 }
+.item-2{
+
+}
+
+.band:hover a{
+  opacity:0.1;
+  zoom: 1;
+  filter: alpha(opacity=50);
+}
+.item-2 a:hover{
+  opacity:1 !important;
+  zoom: 1;
+  filter: alpha(opacity=50);
+}
