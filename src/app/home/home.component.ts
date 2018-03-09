@@ -3,7 +3,8 @@ import { MoviesService } from '../services/movies.service';
 import { Movie } from '../shared/movie';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/min';
-
+import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -12,48 +13,20 @@ import 'rxjs/add/operator/min';
 })
 @Injectable()
 export class HomeComponent implements OnInit {
-  /**
-   * @type {string} name The page title.
-   */
-  name = 'Angular v4 - Applying filters to *ngFor using pipes';
 
-  /**
-   * @type {number} minYear The year of the oldest book in the json.
-   */
-  minYear: number = 1996;
-
-  /**
-   * @type {number} maxYear The year of the newest book in the json.
-   */
-  maxYear: number = 2017;
-
-  /**
-   * @type {number} numberOfMovies The number of movies in the JSON file, used for max attribute for limit and page.
-   */
   numberOfMovies: number;
-
-  /**
-   * @type {number} limit The number of movies per page.
-   */
   limit: number;
-
-  /**
-   * @type {number} page The current page.
-   */
   page: number = 1;
-
-  /**
-   * @type {Book[]} movies A list of movies to output in a table.
-   */
   movies: Movie[];
+  movieTitle: string;
+  buttonStatus = false;
 
   /**
-   * @type {Book} filter The object containing the filter values to apply to bookfilter.
-   * Could have created another entity called BookFilter, but it would basically have the same fields.
-   */
+   * @type {Movie} filter The object containing the filter values to apply to moviefilter.
+    */
   filter: Movie = new Movie();
 
-  constructor(private moviesService: MoviesService) {
+  constructor(private moviesService: MoviesService, private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit() {
@@ -64,5 +37,26 @@ export class HomeComponent implements OnInit {
         this.numberOfMovies = this.movies.length;
         this.limit = 8; // Start off by showing all movies on a single page.
       });
+  }
+
+  focus(title: string){
+    this.movieTitle = title;
+  }
+
+  mouseLeave(id){
+    this.movieTitle = '';
+  }
+
+  next(){
+    this.page = this.page + 1;
+  }
+  prev(){
+
+    if(this.page === 1){
+      this.buttonStatus = false;
+    }else{
+      this.page = this.page - 1;
+    }
+
   }
 }

@@ -1,21 +1,46 @@
 <header>
+
   <form>
-    <input type="text" class="txt card" name="title" [(ngModel)]="filter.title" placeholder="Search Movies" >
+    <input type="text" class="txt card" name="title" [(ngModel)]="filter.title" placeholder="Search Movies">
   </form>
+
+
+  <div class="maxmin">
+    <h1>{{ movieTitle }}</h1>
+    <div class="col">
+      <!--Uncomment if you want to adjust the count of movies to be shown-->
+      <!--<label class="txt" for="limit">Limit (arrow up/ down) : </label>-->
+      <!--<input type="number" class="txt card" name="limit" [(ngModel)]="limit" min="1" [attr.max]="[numberOfBooks]" step="1" placeholder="Limit">-->
+      <!--<br clear="all" />-->
+
+    </div>
+    <div class="col right" *ngIf="movies">
+      <span class="page-span">Page: {{page}}</span>
+      <input type="button" class="txt card btn" value="Next" (click)="next();">
+      <input type="button" class="txt card btn" value="Prev" [disabled]="buttonStatus" (click)="prev();">
+    </div>
+
+
+  </div>
+
 </header>
 
 <div class="band">
 
   <div class="item-2" *ngFor="let movie of movies | moviefilter:filter | slice:(page-1)*limit:page*limit">
-    <a href="#" class="card">
+
+    <a href="javascript:void(0);" (click)="focus(movie.title)" class="card" (mouseleave)="mouseLeave(movie.id);">
       <div class="thumb">
         <img *ngIf="movie.poster_path" class="img-thumbnail" src="https://image.tmdb.org/t/p/w300{{movie.poster_path}}">
       </div>
       <article>
-        <h1>{{movie.title}}</h1>
+
+        <input type="text" class="txt card" name="item" placeholder="Enter Movie Name" [(ngModel)]="movie.title">
+
         <p>{{movie.overview}}</p>
-        <span>{{movie.id}} <input class="btn card" type="btn" value="Overview"></span>
+        <span>{{movie.id}}</span>
       </article>
     </a>
+
   </div>
 </div>

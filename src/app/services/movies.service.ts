@@ -21,7 +21,6 @@ export class MoviesService {
    */
   getMovies(): Observable<Movie[]> {
     return this.http.get(this.api)
-      .map(res => res.json())
-      ;
+      .map(res => res.json());
   }
 }

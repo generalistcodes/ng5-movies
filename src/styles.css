@@ -11,7 +11,6 @@ body {
     background: #FFF;
     padding: 3em;
     font-family: 'Arvo', monospace;
-    color: #fff;
 }
 ul {
     list-style-type:none;
@@ -31,27 +30,12 @@ a {
 }
 
 
-
-/* For home.component.scss */
-.container {
-    display: grid;
-    grid-template-columns: 50% auto;
-}
-.col {
-    padding: .4em 1.3em;
-}
-.color-dark {
-    background: #2885C4;
-}
-.color-light {
-    background: #57B3F1;
-}
-
 input.txt {
     border: 0;
     padding: 1em;
-    width: 80%;
+    width: 100%;
     margin-bottom: 2em;
+    font-size: medium;
 }
 input.btn {
     border: 0;
@@ -65,19 +49,27 @@ input.btn {
     text-align: center;
     width: 100%;
 }
-.life-container {
-    background:#3FA0E1;
-    padding:.5em;
-    font-weight:bold;
-    cursor:pointer;
-}
-.img-circle{
-    height: auto; 
-    width: 20px; 
-    vertical-align: middle; 
-    border-radius: 999em;
-}
 
+.maxmin .col {
+  width: 50%;
+}
+.maxmin label.txt{
+  font-size: 15pt;
+  line-height: 40pt;
+  color: #444444;
+}
+.maxmin input{
+  width: 45%;
+  float: right;
+}
+.maxmin .page-span{
+  width: 5%;
+  font-size: 12px;
+  vertical-align: sub;
+}
+.right{
+  float:right;
+}
 header {
     width: 90%;
     max-width: 1240px;
@@ -103,7 +95,7 @@ header {
       grid-template-columns: repeat(4, 1fr);
     }
   }
-  
+
   .card {
     background: white;
     text-decoration: none;
@@ -174,7 +166,7 @@ header {
   }
   .card .thumb img{
   }
-  
+
   @media (min-width: 60em) {
     .item-1 {
       grid-column: 1 / span 2;
@@ -183,4 +175,3 @@ header {
       font-size: 24px;
     }
   }
-  

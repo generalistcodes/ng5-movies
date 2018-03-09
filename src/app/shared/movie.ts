@@ -13,12 +13,7 @@ export class Movie {
   title: String;
 
   /**
-   * @type {string} author The author of the movie.
+   * @type {string} overview The overview of the movie.
    */
-  author: String;
-
-  /**
-   * @type {number} year The year the movie was published.
-   */
-  year: number;
+  overview: String;
 }
